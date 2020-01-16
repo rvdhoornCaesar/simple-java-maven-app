@@ -5,9 +5,6 @@ pipeline {
             args '-v /root/.m2:/root/.m2' 
         }
     }
-	options {
-        skipStagesAfterUnstable()
-    }
     stages {
         stage('Build') { 
             steps {
@@ -28,11 +25,6 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
-        }
-    }
-	post {
-        always {
-            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
         }
     }
 }
