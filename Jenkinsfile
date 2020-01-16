@@ -1,15 +1,16 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-jdk-11'
-            reuseNode true 
-        }
-    }
+    agent none
     stages {
-        stage('Build') { 
+        stage('Maven Build') {
+            agent { 
+                docker {
+                    image 'maven:3-jdk-11'
+                    reuseNode true 
+                }
+            }
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+                sh "mvn clean install -B"
             }
         }
-    }
+	}
 }
