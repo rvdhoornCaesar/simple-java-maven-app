@@ -23,7 +23,7 @@ pipeline {
         }
 		stage('Maven Sonarqube analysis') {
             steps {
-                withSonarQubeEnv('sonar-<OMGEVINGS_KEY>') {
+                withSonarQubeEnv('sonar-TOCO') {
                     sh "mvn sonar:sonar -B"
                  }
             }
