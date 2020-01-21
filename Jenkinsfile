@@ -22,7 +22,6 @@ pipeline {
             }
         }
 		stage('Maven Sonarqube analysis') {
-            agent { ... }
             steps {
                 withSonarQubeEnv('sonar-<OMGEVINGS_KEY>') {
                     sh "mvn sonar:sonar -B"
